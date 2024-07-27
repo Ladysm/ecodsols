@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Menu = () => {
+const Header = () => {
   return (
     <div>Menu</div>
   )
 }
 
-export default Menu
+export default Header
