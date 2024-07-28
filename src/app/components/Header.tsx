@@ -23,7 +23,7 @@ useEffect(() => {
 },[])
 
   return (
-    <header className={`${scrollHeader && 'bg-white '}  flex justify-center items-center w-full fixed top-0 duration-200 `}>
+    <header className={`${scrollHeader && 'bg-white '}  flex justify-center items-center w-full fixed top-0 duration-200 z-10`}>
       <div className='flex justify-between items-center gap-8 py-3 px-5 max-w-4xl w-full'>
         <div className='min-w-36 flex gap-2'>
           <Image className='w-full' src="/logo.svg" alt='logo' width={160} height={160} />
