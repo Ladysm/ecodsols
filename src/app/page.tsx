@@ -6,11 +6,7 @@ export default function Home() {
     <main>
 <Header/>
 <Banner/>
-<Banner/>
-<Banner/>
-<Banner/>
-<Banner/>
-<Banner/>
+
     </main>
   );
 }

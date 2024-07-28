@@ -25,7 +25,9 @@ const config: Config = {
       'gray': '#8492a6',
       'gray-light': '#d3dce6',
       'dark': '#292929',
-      'white': '#FFFFFF'
+      'white': '#FFFFFF',
+      'customGray': '#F5F5F5',
+      'customYellow': '#FFC700',
       
     },
   },
