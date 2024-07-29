@@ -16,3 +16,7 @@
   white-space: nowrap;
   animation: scroll 20s linear infinite;
 }
+
+.scroll-lock {
+  overflow: hidden;
+}

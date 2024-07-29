@@ -38,7 +38,7 @@ export default function Banner() {
   ];
 
   return (
-    <section className="flex justify-center py-20 items-center h-screen w-full text-dark">
+    <section className="flex justify-center py-20 items-center h-full w-full text-dark">
       <div className="scrolling-wrapper flex justify-end gap-20 items-center w-full h-screen bg-gradient-to-b from-white via-customYellow/30 to-customYellow/50 overflow-hidden rounded-b-full max-w-7xl flex-col">
         <div className="flex justify-center items-center flex-col text-center gap-4">
           <h2 className="text-4xl font-semibold leading-[50px]">
