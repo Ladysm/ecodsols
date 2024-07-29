@@ -3,32 +3,38 @@ import Image from "next/image";
 
 export default function Banner() {
   const Images = [
-   { url:  "https://images.pexels.com/photos/24712934/pexels-photo-24712934/free-photo-of-blanco-y-negro-traje-mujer-sentado.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    
-    width: 'w-60',
-    height: 'h-72'
-   },
-   { url:  "https://images.pexels.com/photos/27255532/pexels-photo-27255532/free-photo-of-escaleras-mujer-retrato-vista-superior.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    width: 'w-60',
-    height: 'h-60'
-   },
-   { url:  "https://images.pexels.com/photos/27255532/pexels-photo-27255532/free-photo-of-escaleras-mujer-retrato-vista-superior.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    width: 'w-60',
-    height: 'h-72'
-   },
-   { url:  "https://images.pexels.com/photos/24712934/pexels-photo-24712934/free-photo-of-blanco-y-negro-traje-mujer-sentado.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    
-    width: 'w-60',
-    height: 'h-60'
-   },
-   { url:  "https://images.pexels.com/photos/27255532/pexels-photo-27255532/free-photo-of-escaleras-mujer-retrato-vista-superior.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    width: 'w-60',
-    height: 'h-72'
-   },
-   { url:  "https://images.pexels.com/photos/27255532/pexels-photo-27255532/free-photo-of-escaleras-mujer-retrato-vista-superior.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    width: 'w-60',
-    height: 'h-60'
-   }
+    {
+      url: "https://images.pexels.com/photos/24712934/pexels-photo-24712934/free-photo-of-blanco-y-negro-traje-mujer-sentado.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+
+      width: 'w-60',
+      height: 'h-72'
+    },
+    {
+      url: "https://images.pexels.com/photos/27255532/pexels-photo-27255532/free-photo-of-escaleras-mujer-retrato-vista-superior.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      width: 'w-60',
+      height: 'h-60'
+    },
+    {
+      url: "https://images.pexels.com/photos/27255532/pexels-photo-27255532/free-photo-of-escaleras-mujer-retrato-vista-superior.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      width: 'w-60',
+      height: 'h-72'
+    },
+    {
+      url: "https://images.pexels.com/photos/24712934/pexels-photo-24712934/free-photo-of-blanco-y-negro-traje-mujer-sentado.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+
+      width: 'w-60',
+      height: 'h-60'
+    },
+    {
+      url: "https://images.pexels.com/photos/27255532/pexels-photo-27255532/free-photo-of-escaleras-mujer-retrato-vista-superior.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      width: 'w-60',
+      height: 'h-72'
+    },
+    {
+      url: "https://images.pexels.com/photos/27255532/pexels-photo-27255532/free-photo-of-escaleras-mujer-retrato-vista-superior.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      width: 'w-60',
+      height: 'h-60'
+    }
   ];
 
   return (
@@ -45,7 +51,7 @@ export default function Banner() {
         </div>
         <div className="flex items-center w-full overflow-hidden">
           <div className="scroll-animation flex items-end">
-            
+
             {Images.concat(Images).map((image, index) => (
               <div key={index} className={`flex bg-white rounded-xl ${image.width} ${image.height} overflow-hidden m-2`}>
                 <Image src={image.url} alt={`image-${index}`} width={1000} height={1000} className="w-full h-full object-cover object-top" />
