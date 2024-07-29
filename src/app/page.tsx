@@ -2,6 +2,7 @@ import Image from "next/image";
 import Header from "./components/Header";
 import Banner from "./components/Banner";
 import Team from "./components/Team";
+import { Services } from "./components/Services";
 
 export default function Home() {
   return (
@@ -9,9 +10,8 @@ export default function Home() {
       <Header />
       <Banner />
       <Team />
-      <Banner />
-      <Banner />
-      <Banner />
+      <Services/>
+      
     </main>
   );
 }
