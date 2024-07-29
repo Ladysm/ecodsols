@@ -21,6 +21,7 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+          'custom-gradient': 'linear-gradient(to top, #FFC700 0%, #FFF6B1 80%)'
       },
     },
     colors: {
@@ -37,6 +38,7 @@ const config: Config = {
       'white': '#FFFFFF',
       'customGray': '#F5F5F5',
       'customYellow': '#FFC700',
+      'yellowDark':'rgba(255, 242, 177)'
       
     },
   },
