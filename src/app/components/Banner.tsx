@@ -46,7 +46,7 @@ export default function Banner() {
           </h2>
           <p className="px-16">
             Innovación social para un mundo mejor: creando soluciones
-            sostenibles que empoderan comunidades y transforman vidas.
+            sostenibles que empoderan comunidades y transforman vidas..
           </p>
         </div>
         <div className="flex items-center w-full overflow-hidden">
