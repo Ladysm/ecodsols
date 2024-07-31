@@ -41,34 +41,6 @@ const Team = () => {
             descriptionShort: "Descripcion corta",
             description: "Gastrónomo comercial, con énfasis en control de calidad, realizo acompañamientos a restaurantes para la creación de nuevos platos y/o productos del sector con la ayuda de nuevas tecnologías, priorizando la inocuidad y estandarización de los servicios de alimentación, mi responsabilidad se fundamenta en convertir una idea gastronómica en algo sostenible.",
             image: ""
-        },
-
-        {
-            name: "Juan Diego Ruiz Araque",
-            descriptionShort: "Descripcion corta",
-            description: "Licenciado en Educación Básica con énfasis en Humanidades y Lengua Castellana del Tecnológico de Antioquia, Magíster en Educación de la Universidad Uniminuto, Magister en Educación del Tecnológico de Monterrey; actualmente, cursa segundo año del Doctorado en Ciencias de la Educación en la Universidad de Cuauhtémoc. <br/><br/> Adicionalmente, posee nueve años de experiencia docente en el sector público, un año de directivo docente en el sector privado y docente universitario. <br/><br/> Maestro de corazón, fiel creyente del quehacer educativo y el desarrollo humano a través del fortalecimiento de los proyectos de vida desde la educación.",
-            image: "https://media-bog2-2.cdn.whatsapp.net/v/t61.24694-24/421156265_367694459158734_2241676125334418376_n.jpg?ccb=11-4&oh=01_Q5AaIOy24U76WwaZ_myFY3VMN76UJyBOZy8w5uztBN61-QdV&oe=66B3EB5C&_nc_sid=e6ed6c&_nc_cat=105"
-        },
-
-        {
-            name: "Melissa Torres Velez",
-            descriptionShort: "Descripcion corta",
-            description: "Profesional trabajadora social. Con 10 años de experiencia en el sector publico y en la coordinación de programas de desarrollo social y educativo específicamente en la ruralidad. <br/><br/> Me destaco por mi labor administrativa y de ejecución; así como la consolidación de relaciones públicas y redes de apoyo.",
-            image: "https://media.licdn.com/dms/image/D5603AQGPGky-q9QoOQ/profile-displayphoto-shrink_800_800/0/1699414987719?e=1727913600&v=beta&t=aPIGoKdVZew_0enHT7c6qjqgXBik02bgHKu8E9iUbb8"
-        },
-
-        {
-            name: "Marco Antonio Montoya Rave",
-            descriptionShort: "Descripcion corta",
-            description: "Comunicador audiovisual, con experiencia en la fotografía social y deportes. Apasionado por los deportes extremos, la literatura, los viajes y el reconocimiento del territorio a través del lente donde logra vislumbrar las problemáticas sociales.",
-            image: "https://media-bog2-2.cdn.whatsapp.net/v/t61.24694-24/421156265_367694459158734_2241676125334418376_n.jpg?ccb=11-4&oh=01_Q5AaIOy24U76WwaZ_myFY3VMN76UJyBOZy8w5uztBN61-QdV&oe=66B3EB5C&_nc_sid=e6ed6c&_nc_cat=105"
-        },
-
-        {
-            name: "Juan Sebastián Benjumea Garcés",
-            descriptionShort: "Descripcion corta",
-            description: "Psicólogo especializado en Gerencia y con una Maestría en Educación. Con más de quince años de experiencia en investigación y dirección de grupos académicos, me destaco en la gestión de riesgos psicosociales en entornos laborales y educativos, promoviendo el bienestar emocional. He trabajado en instituciones como la Universidad Nacional de Colombia y el Tecnológico de Antioquia, liderando proyectos de investigación y programas educativos innovadores. <br/><br/> Además, como editor y autor en revistas científicas, he contribuido al avance de la psicología aplicada. Mi perfil combina habilidades en analítica de datos, comunicación y liderazgo, lo que me permite impactar positivamente en la salud mental y el bienestar de las comunidades educativas y laborales; riesgo psicosociales en grupos de trabajo, entre otros trabajos.",
-            image: "https://media-bog2-2.cdn.whatsapp.net/v/t61.24694-24/421156265_367694459158734_2241676125334418376_n.jpg?ccb=11-4&oh=01_Q5AaIOy24U76WwaZ_myFY3VMN76UJyBOZy8w5uztBN61-QdV&oe=66B3EB5C&_nc_sid=e6ed6c&_nc_cat=105"
         }
     ]
 
@@ -87,7 +59,7 @@ const Team = () => {
 
     const selectedPerson = Team[selectedPersonIndex];
     return (
-        <section className='bg-dark relative h-full py-16 px-5 flex items-center justify-center overflow-hidden'>
+        <section className='bg-dark relative h-full py-16 pb-56 px-5 flex items-center justify-center overflow-hidden'>
 
             <div className="absolute -top-5  w-full bg-gradient-to-b from-dark via-white/5 to-white/10 overflow-hidden h-full rounded-b-full max-w-5xl flex-col">
             </div>
