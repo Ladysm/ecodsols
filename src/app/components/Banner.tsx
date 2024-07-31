@@ -38,24 +38,24 @@ export default function Banner() {
   ];
 
   return (
-    <section className="flex justify-center py-20 items-center h-screen w-full text-dark">
-      <div className="scrolling-wrapper flex justify-end gap-20 items-center w-full h-screen bg-gradient-to-b from-white via-customYellow/30 to-customYellow/50 overflow-hidden rounded-b-full max-w-7xl flex-col">
+    <section className="flex justify-center py-20 items-center h-full w-full text-dark">
+      <div className="scrolling-wrapper flex justify-between pt-16 gap-20 items-center w-full h-[37rem] bg-gradient-to-b from-white via-customYellow/30 to-customYellow/50 overflow-hidden rounded-b-full max-w-7xl flex-col">
         <div className="flex justify-center items-center flex-col text-center gap-4">
           <h2 className="text-4xl font-semibold leading-[50px]">
             Impulsando el Desarrollo <br /> Humano y Sostenible{" "}
           </h2>
-          <p className="px-16">
-            Innovación social para un mundo mejor: creando soluciones
-            sostenibles que empoderan comunidades y transforman vidas...
-            Innovación social para un mundo mejor: creando soluciones
-            sostenibles que empoderan comunidades y transforman vidas...
+
+          <p className="">
+            Innovación social para un mundo mejor: <br /> creando soluciones
+            sostenibles que empoderan comunidades y transforman vidas.
+
           </p>
         </div>
         <div className="flex items-center w-full overflow-hidden">
-          <div className="scroll-animation flex items-end">
+          <div className="scroll-animation flex gap-5 items-end">
 
             {Images.concat(Images).map((image, index) => (
-              <div key={index} className={`flex bg-white rounded-xl ${image.width} ${image.height} overflow-hidden m-2`}>
+              <div key={index} className={`bg-white rounded-xl ${image.width} ${image.height} overflow-hidden`}>
                 <Image src={image.url} alt={`image-${index}`} width={1000} height={1000} className="w-full h-full object-cover object-top" />
               </div>
             ))}

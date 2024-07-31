@@ -1,11 +1,11 @@
 "use client";
 import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 const Team = () => {
 
-    const teamData = [
+    const Team = [
         {
             name: "Juan Esteban Tirado Benjumea",
             descriptionShort: "Descripcion corta",
@@ -74,59 +74,26 @@ const Team = () => {
 
     const [selectedPersonIndex, setSelectedPersonIndex] = useState(0);
     const [animate, setAnimate] = useState(false);
-    const scrollThreshold = 150; // Umbral de 500px para el cambio de índice
-    const [lastScrollTop, setLastScrollTop] = useState(0);
-    const [accumulatedScroll, setAccumulatedScroll] = useState(0);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const delta = scrollTop - lastScrollTop;
-
-            setAccumulatedScroll((prev) => prev + delta);
-
-            if (Math.abs(accumulatedScroll) >= scrollThreshold) {
-                setAnimate(true);
-                setTimeout(() => {
-                    setSelectedPersonIndex((prevIndex) => {
-                        const newIndex = accumulatedScroll > 0
-                            ? (prevIndex + 1) % teamData.length
-                            : (prevIndex - 1 + teamData.length) % teamData.length;
-                        return newIndex;
-                    });
-                    setAnimate(false);
-                }, 300); // La duración debe coincidir con la duración de la animación
-
-                setAccumulatedScroll(0); // Reiniciar el acumulador de desplazamiento
-            }
-
-            setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop); // Para móviles o desplazamiento negativo
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [lastScrollTop, accumulatedScroll]);
 
     const handlePersonClick = (index: any) => {
         if (index !== selectedPersonIndex) {
-          setAnimate(true);
-          setTimeout(() => {
-            setSelectedPersonIndex(index);
-            setAnimate(false);
-          }, 300); // La duración debe coincidir con la duración de la animación
+            setAnimate(true);
+            setTimeout(() => {
+                setSelectedPersonIndex(index);
+                setAnimate(false);
+            }, 300); // La duración debe coincidir con la duración de la animación
         }
-      };
+    };
 
-    const selectedPerson = teamData[selectedPersonIndex];
-
+    const selectedPerson = Team[selectedPersonIndex];
     return (
         <section className='bg-dark relative h-full py-16 px-5 flex items-center justify-center overflow-hidden'>
-            <div className="absolute -top-5 w-full bg-gradient-to-b from-dark via-white/5 to-white/10 overflow-hidden h-full rounded-b-full max-w-5xl flex-col"></div>
 
-            <div className='h-full flex flex-col gap-20 text-white w-full max-w-4xl z-10'>
+            <div className="absolute -top-5  w-full bg-gradient-to-b from-dark via-white/5 to-white/10 overflow-hidden h-full rounded-b-full max-w-5xl flex-col">
+            </div>
+
+
+            <div className=' h-full flex flex-col gap-20 text-white w-full max-w-4xl z-10'>
                 <div className='flex flex-col gap-2 text-center'>
                     <p className='font-extralight text-lg'>Psicologia</p>
                     <h3 className='font-semibold text-3xl'>Conoce los programas pedagogicos</h3>
@@ -134,13 +101,14 @@ const Team = () => {
 
                 <div className='flex justify-between flex-col gap-5'>
                     <h3 className='font-semibold text-2xl'>Equipo de Desarrollo</h3>
-                    <div className='flex justify-between gap-5'>
+                    <div className='flex justify-between gap-5 '>
                         <div className='flex flex-col gap-8 w-full border-r border-white/10'>
-                            {teamData.map((person, index) => (
+                            {Team.map((person, index) => (
                                 <div
                                     key={index}
                                     onClick={() => handlePersonClick(index)}
                                     className={`w-full px-4 duration-100 flex gap-5 items-end ${selectedPersonIndex === index ? 'border-l-2 border-white' : 'border-l-2 border-white/0'}`}
+                                    style={{ cursor: 'pointer' }}
                                 >
                                     <div className='w-full'>
                                         <h4 className='font-bold text-lg'>{person.name}</h4>
@@ -157,7 +125,7 @@ const Team = () => {
                             <div className="relative w-full h-full">
                                 <div className={`absolute h-full inset-0 transition-opacity duration-300 ${animate ? 'opacity-0' : 'opacity-100'}`}>
                                     <div className={`flex flex-col justify-center gap-5 items-center transition-transform duration-300 ${animate ? 'translate-y-5' : 'translate-y-0'}`}>
-                                        <div className='w-full rounded-2xl overflow-hidden'>
+                                        <div className='w-full  rounded-2xl overflow-hidden'>
                                             <Image src={selectedPerson.image} className='w-full h-full object-cover' alt='Person Team' width={1000} height={1000} />
                                         </div>
                                         <div className='w-full flex flex-col gap-2'>
