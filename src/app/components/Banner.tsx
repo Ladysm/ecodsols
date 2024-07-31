@@ -44,9 +44,11 @@ export default function Banner() {
           <h2 className="text-4xl font-semibold leading-[50px]">
             Impulsando el Desarrollo <br /> Humano y Sostenible{" "}
           </h2>
+
           <p className="">
             Innovación social para un mundo mejor: <br /> creando soluciones
             sostenibles que empoderan comunidades y transforman vidas.
+
           </p>
         </div>
         <div className="flex items-center w-full overflow-hidden">
