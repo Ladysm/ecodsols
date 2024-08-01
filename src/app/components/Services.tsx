@@ -4,7 +4,7 @@ import { Card } from "./Card";
 export const Services = () => {
   return (
     <section className="flex flex-col  items-center h-full w-full bg-yellowDark px-24 gap-10 ">
-      <div className=" t-0 bg-custom-gradient items-center justify-center flex flex-col h-4/5 py-56 px-8 w-full max-w-7xl rounded-b-full rounded-3xl gap-3">
+      <div className=" t-0 bg-custom-gradient-vertical items-center justify-center flex flex-col h-4/5 py-56 px-8 w-full max-w-7xl rounded-b-full rounded-3xl gap-3">
         <h2 className="text-5xl text-center font-semibold leading-tight">
           
           Conoce nuestros
