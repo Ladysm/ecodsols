@@ -52,6 +52,7 @@ const config: Config = {
       'customYellow': '#FFC700',
       'yellowDark':'rgba(255, 242, 177)'
       
+      
     },
   },
   plugins: [],
