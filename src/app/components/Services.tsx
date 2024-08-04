@@ -1,47 +1,74 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { servicesList, typeList } from "../config/list";
 import { Card } from "./Card";
+import Link from "next/link";
+
+type Service = {
+  id: number;
+  number: string | number;
+  name: string;
+  type: string;
+  description: string;
+};
+
 export const Services = () => {
   const [selectedTypeIndex, setSelectedTypeIndex] = useState(0);
+  const [filteredServices, setFilteredServices] = useState<Service[]>([]);
+  const [animating, setAnimating] = useState(false);
 
   const selectedType = typeList[selectedTypeIndex].name;
 
-  const filteredServices = servicesList.filter(service => service.type === selectedType);
+  useEffect(() => {
+    setAnimating(true);
+    setTimeout(() => {
+      if (selectedType === "Todos") {
+        setFilteredServices(servicesList);
+      } else {
+        setFilteredServices(servicesList.filter(service => service.type === selectedType));
+      }
+      setAnimating(false);
+    }, 500); // Duración de la animación de salida
+  }, [selectedTypeIndex]);
 
   return (
-    <section className="flex flex-col  items-center h-full w-full bg-yellowDark px-24 gap-10 pb-10 ">
-      <div className=" t-0 bg-custom-gradient-vertical items-center justify-center flex flex-col h-4/5 py-56 px-8 w-full max-w-7xl rounded-b-full rounded-3xl gap-3">
-        <h2 className="text-5xl text-center font-semibold leading-tight">
-
-          Conoce nuestros
-          <br /> <p className="text-4xl leading-8">servicios psicológicos</p>
-        </h2>
+    <section className="flex flex-col relative items-center w-full bg-yellowDark min-h-[30rem] px-24 gap-10 pt-20 pb-10 duration-200">
+      
+      <div className='flex flex-col gap-2 text-start w-full max-w-4xl text-dark'>
+        <p className='font-normal text-lg'>Equipo</p>
+        <h3 className='font-semibold text-3xl'>Conoce a todo nuestro equipo de trabajo</h3>
       </div>
 
-      <ul className="flex justify-between gap-5 max-w-4xl w-full">
+      <ul className="flex justify-start gap-3 max-w-4xl w-full pt-t z-10">
         {typeList.map((type, index) => (
           <li
             key={type.id}
-            className={index === selectedTypeIndex ? 'border-b' : ''}
+            className={`cursor-pointer py-2 px-5 rounded-full border-dark border duration-300 ease-in-out
+              ${index === selectedTypeIndex ? 'bg-dark text-yellowDark' : 'bg-transparent text-dark'}`}
             onClick={() => setSelectedTypeIndex(index)}
           >
             {type.name}
           </li>
         ))}
       </ul>
-      <div className="flex flex-col justify-center items-center gap-4 max-w-4xl w-full">
+      <div className="grid grid-cols-2 gap-4 max-w-4xl w-full z-10 duration-200">
         {filteredServices.map((service, index) => (
-          <Card
+          <div
             key={service.id}
-            number={service.number}
-            name={service.name}
-            type={service.type}
-            description={service.description}
-            id={service.id} />
+            className={`transition-opacity duration-500 ${animating ? 'opacity-0' : 'opacity-100'}`}
+          >
+            <Card
+              number={index + 1}
+              name={service.name}
+              type={service.type}
+              description={service.description}
+              id={service.id}
+            />
+          </div>
         ))}
       </div>
+      <Link href="/" className='border w-fit py-2 px-6 rounded-full hover:bg-dark hover:text-white duration-200'>Ver más</Link>
     </section>
   );
 };

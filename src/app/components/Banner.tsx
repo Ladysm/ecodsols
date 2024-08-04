@@ -38,8 +38,8 @@ export default function Banner() {
   ];
 
   return (
-    <section className="flex justify-center pt-20 pb-3 items-center h-full w-full text-dark">
-      <div className="scrolling-wrapper flex justify-between pt-16 gap-20 items-center w-full h-[37rem] bg-gradient-to-b from-white via-customYellow/30 to-customYellow/50  rounded-b-full max-w-7xl flex-col overflow-hidden">
+    <section className="flex justify-center pb-3 items-center h-full w-full text-dark">
+      <div className="scrolling-wrapper flex justify-end pt-16 gap-16 items-center w-full h-[40rem] bg-gradient-to-b from-white via-customYellow/30 to-customYellow/50  rounded-b-full max-w-6xl flex-col overflow-hidden">
         <div className="flex justify-center items-center flex-col text-center gap-4">
           <h2 className="text-4xl font-semibold leading-[50px]">
             Impulsando el Desarrollo <br /> Humano y Sostenible{" "}

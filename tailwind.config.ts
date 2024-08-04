@@ -22,12 +22,23 @@ const config: Config = {
           "0%": { opacity: "1", transform: "translateY(0)" },
           "100%": { opacity: "0", transform: "translateY(20px)" },
         },
+
+        fadeIn: {
+          '0%': { opacity: "0", transform: 'translateY(20px)' },
+          '100%': { opacity: "1", transform: 'translateY(0)' },
+        },
+        fadeOut: {
+          '0%': { opacity: "1", transform: 'translateY(0)' },
+          '100%': { opacity: "0", transform: 'translateY(20px)' },
+        },
       },
 
       animation: {
         bubble: "bubble 2s infinite",
         fadeInUp: "fadeInUp 0.3s ease-out",
         fadeOutDown: "fadeOutDown 0.3s ease-out",
+        fadeIn: 'fadeIn 0.5s ease-out forwards',
+        fadeOut: 'fadeOut 0.5s ease-in forwards',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

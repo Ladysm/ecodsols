@@ -1,11 +1,19 @@
 "use client";
-import { ArrowUpRight } from 'lucide-react';
+import { AlignLeft, ArrowUpRight, CameraOff } from 'lucide-react';
 import Image from 'next/image';
-import React, { useState } from 'react'
+import Link from 'next/link';
+import React, { useEffect, useRef, useState } from 'react'
+
+interface TeamMember {
+    name: string;
+    descriptionShort: string;
+    description: string;
+    image: string;
+}
 
 const Team = () => {
 
-    const Team = [
+    const Team: TeamMember[] = [
         {
             name: "Juan Esteban Tirado Benjumea",
             descriptionShort: "Descripcion corta",
@@ -33,83 +41,96 @@ const Team = () => {
         {
             name: "Sebastián Giraldo",
             descriptionShort: "FullStack Developer & UI/UX",
-            description: "Desarrollador de software y diseñador UI/UX. Me especializo en crear soluciones de software eficientes e interfaces de usuario intuitivas. Combino habilidades técnicas y de diseño para desarrollar experiencias digitales que sean funcionales y atractivas para los usuarios.",
+            description: "Desarrollador de software y diseñador UI/UX. Me especializo en crear soluciones de software eficientes e interfaces de usuario intuitivas. <br/><br/> Combino habilidades técnicas y de diseño para desarrollar experiencias digitales que sean funcionales y atractivas para los usuarios.",
             image: "https://media-bog2-2.cdn.whatsapp.net/v/t61.24694-24/421156265_367694459158734_2241676125334418376_n.jpg?ccb=11-4&oh=01_Q5AaIOy24U76WwaZ_myFY3VMN76UJyBOZy8w5uztBN61-QdV&oe=66B3EB5C&_nc_sid=e6ed6c&_nc_cat=105"
-        },
-        {
-            name: "Esteban Ortiz",
-            descriptionShort: "Descripcion corta",
-            description: "Gastrónomo comercial, con énfasis en control de calidad, realizo acompañamientos a restaurantes para la creación de nuevos platos y/o productos del sector con la ayuda de nuevas tecnologías, priorizando la inocuidad y estandarización de los servicios de alimentación, mi responsabilidad se fundamenta en convertir una idea gastronómica en algo sostenible.",
-            image: ""
         }
     ]
 
-    const [selectedPersonIndex, setSelectedPersonIndex] = useState(0);
-    const [animate, setAnimate] = useState(false);
 
-    const handlePersonClick = (index: any) => {
-        if (index !== selectedPersonIndex) {
-            setAnimate(true);
-            setTimeout(() => {
-                setSelectedPersonIndex(index);
-                setAnimate(false);
-            }, 300); // La duración debe coincidir con la duración de la animación
-        }
-    };
+    const [activeIndex, setActiveIndex] = useState<number>(0);
+    const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-    const selectedPerson = Team[selectedPersonIndex];
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5,
+        };
+
+        const observerCallback = (entries: IntersectionObserverEntry[]) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const index = itemRefs.current.indexOf(entry.target as HTMLDivElement);
+                    setActiveIndex(index);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        itemRefs.current.forEach((ref) => {
+            if (ref) observer.observe(ref);
+        });
+
+        return () => {
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+            itemRefs.current.forEach((ref) => {
+                if (ref) observer.unobserve(ref);
+            });
+        };
+    }, []);
+
     return (
-        <section className='bg-dark relative h-full py-16 pb-56 px-5 flex items-center justify-center overflow-hidden'>
-
-            <div className="absolute -top-5  w-full bg-gradient-to-b from-dark via-white/5 to-white/10 overflow-hidden h-full rounded-b-full max-w-5xl flex-col">
-            </div>
-
-
-            <div className=' h-full flex flex-col gap-20 text-white w-full max-w-4xl z-10'>
+        <section className='relative px-5 flex items-center justify-center h-full py-20'>
+            {/* <div className="w-full absolute top-0 bg-gradient-to-b from-white/10 via-yellow/5 to-yellow/10 h-[99%] rounded-b-full max-w-5xl"></div> */}
+            
+            <div className='h-full flex flex-col gap-20 text-dark w-full max-w-4xl z-10'>
                 <div className='flex flex-col gap-2 text-center'>
-                    <p className='font-extralight text-lg'>Psicologia</p>
-                    <h3 className='font-semibold text-3xl'>Conoce los programas pedagogicos</h3>
+                    <p className='font-extralight text-lg'>Equipo</p>
+                    <h3 className='font-semibold text-3xl'>Conoce a todo nuestro equipo de trabajo</h3>
                 </div>
 
-                <div className='flex justify-between flex-col gap-5'>
-                    <h3 className='font-semibold text-2xl'>Equipo de Desarrollo</h3>
-                    <div className='flex justify-between gap-5 '>
-                        <div className='flex flex-col gap-8 w-full border-r border-white/10'>
-                            {Team.map((person, index) => (
-                                <div
-                                    key={index}
-                                    onClick={() => handlePersonClick(index)}
-                                    className={`w-full px-4 duration-100 flex gap-5 items-end ${selectedPersonIndex === index ? 'border-l-2 border-white' : 'border-l-2 border-white/0'}`}
-                                    style={{ cursor: 'pointer' }}
-                                >
-                                    <div className='w-full'>
-                                        <h4 className='font-bold text-lg'>{person.name}</h4>
-                                        <p className='font-light text-base'>{person.descriptionShort}</p>
-                                    </div>
-
-                                    <div className={`duration-300 ${selectedPersonIndex === index && 'rotate-45'}`}>
-                                        <ArrowUpRight />
-                                    </div>
-                                </div>
+                <div className='flex justify-between gap-20 h-full'>
+                    <div className='sticky top-28 self-start flex flex-col gap-8 w-2/5 duration-200'>
+                        <ul className='flex flex-col gap-7'>
+                            {Team.map((item, index) => (
+                                <li key={index} className={`transition-opacity duration-300 ${activeIndex === index ? 'opacity-100' : 'opacity-50'}`}>
+                                    <h2 className='font-semibold'>
+                                        <span className='font-bold text-2xl pe-2'>{index +1}</span>{item.name}</h2>
+                                    <p className='font-extralight'>{item.descriptionShort}</p>
+                                </li>
                             ))}
-                        </div>
-                        <div className='w-full flex items-center justify-center'>
-                            <div className="relative w-full h-full">
-                                <div className={`absolute h-full inset-0 transition-opacity duration-300 ${animate ? 'opacity-0' : 'opacity-100'}`}>
-                                    <div className={`flex flex-col justify-center gap-5 items-center transition-transform duration-300 ${animate ? 'translate-y-5' : 'translate-y-0'}`}>
-                                        <div className='w-full  rounded-2xl overflow-hidden'>
-                                            <Image src={selectedPerson.image} className='w-full h-full object-cover' alt='Person Team' width={1000} height={1000} />
-                                        </div>
-                                        <div className='w-full flex flex-col gap-2'>
-                                            <h4 className='font-bold text-xl'>{selectedPerson.name}</h4>
-                                            <p className='font-light text-sm' dangerouslySetInnerHTML={{ __html: selectedPerson.description }}></p>
-                                        </div>
+                        </ul>
+                    </div>
+
+                    <div className='w-3/4 flex flex-col gap-20'>
+                        {Team.map((item, index) => (
+                            <div
+                                key={index}
+                                className='w-full flex flex-col gap-3'
+                                ref={(el) => {
+                                    itemRefs.current[index] = el;
+                                }}
+                            >
+                                {item.image ? (
+                                    <Image className='w-40 h-40 rounded-xl' src={item.image} alt={item.name} width={800} height={800} />
+                                ) : (
+                                    <div className='border border-white/10 rounded-xl w-40 h-40 flex items-center justify-center'>
+                                        <CameraOff size={30} />
                                     </div>
+                                )}
+                                <h3 className='font-semibold text-xl'>{item.name}</h3>
+                                <div className='flex gap-3 items-start'>
+                                    <ul className='list-disc'>
+                                        <li className='' dangerouslySetInnerHTML={{ __html: item.description }}></li>
+                                    </ul>
                                 </div>
                             </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
+
+                <Link href="/" className='border w-fit py-2 px-6 rounded-full hover:bg-dark hover:text-white duration-200'>Ver más</Link>
             </div>
         </section>
     )
