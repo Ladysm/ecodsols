@@ -1,6 +1,6 @@
 export interface Services {
   id: number;
-  number: string;
+  number: string | number;
   name: string;
   type: string;
   description: string;
@@ -13,6 +13,10 @@ export interface Types {
 
 
 export const typeList: Types[] = [
+  {
+    id: 0,
+    name: "Todos"
+  },
   {
     id: 1,
     name: "psychological"
